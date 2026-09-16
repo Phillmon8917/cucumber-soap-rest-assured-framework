@@ -15,6 +15,9 @@ public class CreateUserApi extends BaseApi {
         super.logAllResponseData();
     }
 
+    /**
+     * Sends a CreateUser SOAP request with the given XML body.
+     */
     public Response CreateANewUser(String xmlBody){
         super.buildRequestSpecification();
         super.setRequestBody(xmlBody);

@@ -15,6 +15,9 @@ public class GetProductsApi extends BaseApi {
         super.logAllResponseData();
     }
 
+    /**
+     * Sends a GetProducts SOAP request with the given XML body.
+     */
     public Response getProducts(String xmlBody) {
         super.setHeaders(Headers.buildHeaders("GetProducts"));
         super.setRequestBody(xmlBody);

@@ -21,6 +21,9 @@ public class GetUsersSteps {
         this.getUsersApi = new GetUsersApi();
     }
 
+    /**
+     * Builds a get users request body with a fixed page and limit.
+     */
     @Given("I have a valid get users request body")
     public void iHaveAValidGetUsersRequestBody() {
         this.xmlBody = new GetUsersRequestBuilder()
@@ -29,12 +32,18 @@ public class GetUsersSteps {
                 .buildXml();
     }
 
+    /**
+     * Sends the get users request and stores the response.
+     */
     @When("I send a get users request")
     public void iSendAGetUsersRequest() {
         this.response = this.getUsersApi.getUsers(this.xmlBody);
         this.sharedStepContext.setResponse(this.response);
     }
 
+    /**
+     * Asserts that the response contains at least one user.
+     */
     @And("the response should contain a list of users")
     public void theResponseShouldContainAListOfUsers() {
         new Assertions(this.response.asString(), "user")

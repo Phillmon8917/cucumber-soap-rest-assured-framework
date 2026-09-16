@@ -16,12 +16,18 @@ import org.testng.annotations.Test;
 )
 public class RegressionTests extends AbstractTestNGCucumberTests {
 
+    /**
+     * Supplies the regression-tagged scenarios to run, in parallel.
+     */
     @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return super.scenarios();
     }
 
+    /**
+     * Runs a single scenario, retrying it on failure via {@link RetryAnalyzer}.
+     */
     @Test(description = "Regression Tests - Full suite",
             dataProvider = "scenarios",
             retryAnalyzer = RetryAnalyzer.class

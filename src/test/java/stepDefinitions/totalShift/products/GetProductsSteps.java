@@ -21,6 +21,9 @@ public class GetProductsSteps {
         this.getProductsApi = new GetProductsApi();
     }
 
+    /**
+     * Builds a get products request body with a fixed page and limit.
+     */
     @Given("I have a valid get products request body")
     public void iHaveAValidGetProductsRequestBody() {
         this.xmlBody = new GetProductsRequestBuilder()
@@ -29,12 +32,18 @@ public class GetProductsSteps {
                 .buildXml();
     }
 
+    /**
+     * Sends the get products request and stores the response.
+     */
     @When("I send a get products request")
     public void iSendAGetProductsRequest() {
         this.response = this.getProductsApi.getProducts(this.xmlBody);
         this.sharedStepContext.setResponse(this.response);
     }
 
+    /**
+     * Asserts that the response contains at least one product.
+     */
     @And("the response should contain a list of products")
     public void theResponseShouldContainAListOfProducts() {
         new Assertions(this.response.asString(), "product")

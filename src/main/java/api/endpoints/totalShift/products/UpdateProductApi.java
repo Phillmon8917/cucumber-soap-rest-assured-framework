@@ -15,6 +15,9 @@ public class UpdateProductApi extends BaseApi {
         super.logAllResponseData();
     }
 
+    /**
+     * Sends an UpdateProduct SOAP request with the given XML body.
+     */
     public Response updateProduct(String xmlBody) {
         super.setHeaders(Headers.buildHeaders("UpdateProduct"));
         super.setRequestBody(xmlBody);

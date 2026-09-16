@@ -15,6 +15,9 @@ public class GetOrderApi extends BaseApi {
         super.logAllResponseData();
     }
 
+    /**
+     * Sends a GetOrder SOAP request with the given XML body.
+     */
     public Response getOrder(String xmlBody) {
         super.setHeaders(Headers.buildHeaders("GetOrder"));
         super.setRequestBody(xmlBody);

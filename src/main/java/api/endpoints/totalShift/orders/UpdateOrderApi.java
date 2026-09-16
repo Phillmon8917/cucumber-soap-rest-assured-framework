@@ -15,6 +15,9 @@ public class UpdateOrderApi extends BaseApi {
         super.logAllResponseData();
     }
 
+    /**
+     * Sends an UpdateOrder SOAP request with the given XML body.
+     */
     public Response updateOrder(String xmlBody) {
         super.setHeaders(Headers.buildHeaders("UpdateOrder"));
         super.setRequestBody(xmlBody);

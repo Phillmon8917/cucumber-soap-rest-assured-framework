@@ -24,6 +24,9 @@ public class UpdateProductSteps {
         this.updateProductApi = updateProductApi;
     }
 
+    /**
+     * Builds an update request that changes the created product's price, keeping other fields the same.
+     */
     @And("I have valid update product details with price")
     public void iHaveValidUpdateProductDetailsWithPrice() {
         XmlPath xmlPath = new XmlPath(this.sharedStepContext.getResponse().asString());
@@ -40,17 +43,26 @@ public class UpdateProductSteps {
                 .buildXml();
     }
 
+    /**
+     * Sends the update product request and stores the response.
+     */
     @When("I send an update product request")
     public void iSendAnUpdateProductRequest() {
         this.sharedStepContext.setResponse(this.updateProductApi.updateProduct(xmlUpdateBody));
     }
 
+    /**
+     * Asserts that the response reflects the new price.
+     */
     @And("the response should contain the updated product price")
     public void theResponseShouldContainTheUpdatedProductPrice() {
         new Assertions(this.sharedStepContext.getResponse().asString(), "product")
                 .assertFieldEquals("price", this.newPrice);
     }
 
+    /**
+     * Builds an update request body targeting a random, non-existent product ID.
+     */
     @Given("I have update product details with an invalid random ID")
     public void iHaveUpdateProductDetailsWithAnInvalidRandomID() {
         this.generatedRandomGuid = FakerUtil.getRandomUUID();
@@ -59,6 +71,9 @@ public class UpdateProductSteps {
                 .buildXml();
     }
 
+    /**
+     * Asserts that the response contains a "product not found" fault message.
+     */
     @And("the response should contain a product not found error message")
     public void theResponseShouldContainAProductNotFoundErrorMessage() {
         new Assertions(this.sharedStepContext.getResponse().asString(), "Fault")

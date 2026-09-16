@@ -18,6 +18,9 @@ public class SharedStepContext {
     private String createdUserId;
     private String createdProductId;
 
+    /**
+     * Clears all state held between scenarios.
+     */
     public void reset() {
         this.response = null;
         this.createUserDto = null;

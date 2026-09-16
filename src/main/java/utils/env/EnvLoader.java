@@ -41,6 +41,9 @@ public class EnvLoader {
         return value.trim();
     }
 
+    /**
+     * Returns the first non-blank candidate, or {@code null} if all are blank.
+     */
     private String firstNonBlank(String... candidates) {
         for (String candidate : candidates) {
             if (candidate != null && !candidate.isBlank()) {

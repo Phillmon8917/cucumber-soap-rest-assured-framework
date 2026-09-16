@@ -15,6 +15,9 @@ public class GetUsersApi extends BaseApi {
         super.logAllResponseData();
     }
 
+    /**
+     * Sends a GetUsers SOAP request with the given XML body.
+     */
     public Response getUsers(String xmlBody){
         super.setHeaders(Headers.buildHeaders("GetUsers"));
         super.setRequestBody(xmlBody);

@@ -39,6 +39,9 @@ public class Hooks {
         }
     }
 
+    /**
+     * Resets shared scenario state before each scenario runs.
+     */
     @Before
     public void setUp(){
         sharedStepContext.reset();

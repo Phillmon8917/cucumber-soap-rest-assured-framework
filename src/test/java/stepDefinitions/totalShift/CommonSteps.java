@@ -11,6 +11,9 @@ public class CommonSteps {
         this.sharedStepContext = sharedStepContext;
     }
 
+    /**
+     * Asserts that the last response's HTTP status code matches the given value.
+     */
     @Then("the response status code should be {int}")
     public void theResponseStatusCodeShouldBe(int statusCode) {
         this.sharedStepContext.getResponse().then()

@@ -11,6 +11,9 @@ import java.util.Map;
 @UtilityClass
 public class XmlUtils {
 
+    /**
+     * Reads an XML template from the classpath as-is.
+     */
     public String readFile(String resourcePath) {
 
         try (InputStream in = XmlUtils.class.getClassLoader()
@@ -29,6 +32,10 @@ public class XmlUtils {
         }
     }
 
+    /**
+     * Reads an XML template from the classpath and substitutes each {@code ${key}} placeholder
+     * with its matching value.
+     */
     public String readFile(String resourcePath, Map<String, String> replacements) {
         String content = readFile(resourcePath);
 

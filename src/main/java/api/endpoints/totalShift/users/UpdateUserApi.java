@@ -14,6 +14,9 @@ public class UpdateUserApi extends BaseApi {
         super.logAllRequestData();
     }
 
+    /**
+     * Sends an UpdateUser SOAP request with the given XML body.
+     */
     public Response updateUser(String xmlBody){
         super.setHeaders(Headers.buildHeaders("UpdateUser"));
         super.setRequestBody(xmlBody);

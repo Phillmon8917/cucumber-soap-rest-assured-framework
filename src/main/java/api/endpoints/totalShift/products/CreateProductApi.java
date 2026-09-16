@@ -15,6 +15,9 @@ public class CreateProductApi extends BaseApi {
         super.logAllResponseData();
     }
 
+    /**
+     * Sends a CreateProduct SOAP request with the given XML body.
+     */
     public Response createProduct(String xmlBody) {
         super.setHeaders(Headers.buildHeaders("CreateProduct"));
         super.setRequestBody(xmlBody);

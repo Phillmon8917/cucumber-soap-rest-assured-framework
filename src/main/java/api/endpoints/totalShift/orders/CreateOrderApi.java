@@ -15,6 +15,9 @@ public class CreateOrderApi extends BaseApi {
         super.logAllResponseData();
     }
 
+    /**
+     * Sends a CreateOrder SOAP request with the given XML body.
+     */
     public Response createOrder(String xmlBody) {
         super.setHeaders(Headers.buildHeaders("CreateOrder"));
         super.setRequestBody(xmlBody);

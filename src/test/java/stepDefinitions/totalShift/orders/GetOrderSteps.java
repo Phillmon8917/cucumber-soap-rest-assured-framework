@@ -22,6 +22,9 @@ public class GetOrderSteps {
         this.sharedStepContext = sharedStepContext;
     }
 
+    /**
+     * Builds a get order request body using the ID of the most recently created order.
+     */
     @And("I have a valid get order by ID request body with the created order ID")
     public void iHaveAValidGetOrderByIDRequestBodyWithTheCreatedOrderID() {
         XmlPath xmlPath = new XmlPath(sharedStepContext.getResponse().asString());
@@ -30,11 +33,17 @@ public class GetOrderSteps {
                 .buildXml();
     }
 
+    /**
+     * Sends the get order request and stores the response.
+     */
     @When("I send a get order request")
     public void iSendAGetOrderRequest() {
         this.sharedStepContext.setResponse(this.getOrderApi.getOrder(this.xmlBody));
     }
 
+    /**
+     * Builds a get order request body using a random, non-existent ID.
+     */
     @Given("I have a get order by ID request with an invalid random ID")
     public void iHaveAGetOrderByIDRequestWithAnInvalidRandomID() {
         this.generatedRandomGuid = FakerUtil.getRandomUUID();
@@ -43,6 +52,9 @@ public class GetOrderSteps {
                 .buildXml();
     }
 
+    /**
+     * Asserts that the response contains an "order not found" fault message.
+     */
     @And("the response should contain an order validation error message")
     public void theResponseShouldContainAnOrderValidationErrorMessage() {
         new Assertions(this.sharedStepContext.getResponse().asString(), "Fault")

@@ -25,6 +25,9 @@ public class CreateProductSteps {
         this.sharedStepContext = sharedStepContext;
     }
 
+    /**
+     * Generates a valid, random set of product details and builds the create request body.
+     */
     @Given("I have valid product details")
     public void iHaveValidProductDetails() {
         String name = FakerUtil.getRandomProductName();
@@ -45,6 +48,9 @@ public class CreateProductSteps {
                 .buildXml();
     }
 
+    /**
+     * Sends the create product request and stores the response and generated product ID.
+     */
     @When("I send a create product request")
     public void iSendACreateProductRequest() {
         this.response = this.createProductApi.createProduct(xmlBody);
@@ -54,6 +60,9 @@ public class CreateProductSteps {
         this.sharedStepContext.setCreatedProductId(xmlPath.getString("**.find { it.name() == 'product' }.id"));
     }
 
+    /**
+     * Asserts that the response echoes back the submitted product details.
+     */
     @And("the response should contain the submitted product details")
     public void theResponseShouldContainTheSubmittedProductDetails() {
         new Assertions(this.response.asString(), "product")
@@ -64,6 +73,9 @@ public class CreateProductSteps {
                 .assertFieldEquals("category", this.createProductDto.category());
     }
 
+    /**
+     * Asserts that the response contains a generated product ID.
+     */
     @And("the response should contain a generated product ID")
     public void theResponseShouldContainAGeneratedProductID() {
         new Assertions(this.response.asString(), "product")

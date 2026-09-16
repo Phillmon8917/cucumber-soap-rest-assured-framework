@@ -16,12 +16,18 @@ import org.testng.annotations.Test;
 )
 public class SmokeTests extends AbstractTestNGCucumberTests {
 
+    /**
+     * Supplies the smoke-tagged scenarios to run, sequentially.
+     */
     @Override
     @DataProvider(parallel = false)
     public Object[][] scenarios() {
         return super.scenarios();
     }
 
+    /**
+     * Runs a single scenario, retrying it on failure via {@link RetryAnalyzer}.
+     */
     @Test(description = "Smoke Tests - For local single scenario run",
             dataProvider = "scenarios",
             retryAnalyzer = RetryAnalyzer.class

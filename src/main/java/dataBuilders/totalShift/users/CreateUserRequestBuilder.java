@@ -6,6 +6,9 @@ import utils.xml.XmlUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Builds the XML body for a CreateUser SOAP request from a fluent set of fields.
+ */
 public class CreateUserRequestBuilder {
 
     private final Map<String, String> data = new HashMap<>();

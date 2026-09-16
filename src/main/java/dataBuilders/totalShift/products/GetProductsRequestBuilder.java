@@ -6,6 +6,9 @@ import utils.xml.XmlUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Builds the XML body for a GetProducts SOAP request from a fluent set of fields.
+ */
 public class GetProductsRequestBuilder {
     private final Map<String, String> data = new HashMap<>();
     private static final String XML_TEMPLATE_PATH = "requestXmls/totalShiftLeft/products/getProducts.xml";
