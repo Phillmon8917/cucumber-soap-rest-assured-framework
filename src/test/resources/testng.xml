@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cucumber Test Suites" parallel="false">
+
+    <!-- SANITY - Run multiple times daily -->
+    <test name="Sanity Tests - Quick Checks">
+        <classes>
+            <class name="runners.SanityTests" />
+        </classes>
+    </test>
+
+    <!-- SMOKE - Single run to test locally -->
+    <test name="Smoke Tests - Pre-Release">
+        <classes>
+            <class name="runners.SmokeTests" />
+        </classes>
+    </test>
+
+    <!-- REGRESSION - Full suite -->
+    <test name="Regression Tests - Full Suite">
+        <classes>
+            <class name="runners.RegressionTests" />
+        </classes>
+    </test>
+
+</suite>

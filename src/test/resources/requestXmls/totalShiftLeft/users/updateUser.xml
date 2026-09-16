@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <UpdateUserRequest xmlns="http://demo.totalshiftleft.ai/soap">
+      <id>${id}</id>
+      <name>${name}</name>
+      <email>${email}</email>
+      <role>${role}</role>
+      <age>${age}</age>
+    </UpdateUserRequest>
+  </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <CreateOrderRequest xmlns="http://demo.totalshiftleft.ai/soap">
+            <user_id>${userId}</user_id>
+            <product_id>${productId}</product_id>
+            <quantity>${quantity}</quantity>
+            <status>${status}</status>
+            <notes>${notes}</notes>
+        </CreateOrderRequest>
+    </soap:Body>
+</soap:Envelope>

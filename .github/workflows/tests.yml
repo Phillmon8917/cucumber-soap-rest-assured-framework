@@ -1,0 +1,67 @@
+name: SOAP API Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: Test suite
+        type: choice
+        required: true
+        default: sanity
+        options:
+          - sanity
+          - regression
+      module:
+        description: Module to test
+        type: choice
+        required: true
+        default: all
+        options:
+          - all
+          - user
+          - product
+          - order
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    env:
+      BASE_URI: https://demo.totalshiftleft.ai
+      CONNECTION_TIMEOUT: 5000
+      SOCKET_TIMEOUT: 7000
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build tag expression
+        id: tags
+        run: |
+          TAGS="@${{ inputs.suite }} and not @wip and not @skip"
+          if [ "${{ inputs.module }}" != "all" ]; then
+            TAGS="$TAGS and @${{ inputs.module }}"
+          fi
+          echo "expression=$TAGS" >> "$GITHUB_OUTPUT"
+
+      - name: Run tests
+        run: mvn -B test -Dtest=RegressionTests "-Dcucumber.filter.tags=${{ steps.tags.outputs.expression }}"
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 14
+
+      - name: Upload TestNG report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: testng-report
+          path: test-output/
+          retention-days: 14

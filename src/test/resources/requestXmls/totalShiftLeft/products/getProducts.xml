@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <GetProductsRequest xmlns="http://demo.totalshiftleft.ai/soap">
+            <page>${page}</page>
+            <limit>${limit}</limit>
+        </GetProductsRequest>
+    </soap:Body>
+</soap:Envelope>

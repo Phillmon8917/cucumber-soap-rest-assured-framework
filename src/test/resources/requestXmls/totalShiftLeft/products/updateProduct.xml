@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <UpdateProductRequest xmlns="http://demo.totalshiftleft.ai/soap">
+            <id>${id}</id>
+            <name>${name}</name>
+            <price>${price}</price>
+            <description>${description}</description>
+            <stock>${stock}</stock>
+            <category>${category}</category>
+        </UpdateProductRequest>
+    </soap:Body>
+</soap:Envelope>
